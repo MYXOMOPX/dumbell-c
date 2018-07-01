@@ -1,0 +1,43 @@
+$size_smallest: 7px;
+$size_small: 10px;
+$size_medium: 13px;
+$size_big: 17px;
+$size_biggest: 21px;
+
+$color_metallic: #3a393a;
+$color_plastic: #a8a7a8;
+
+.dumbell {
+  height: 10px;
+  width: 10px;
+  border-radius: 100px;
+  border-color: $color_metallic;
+}
+
+.dumbell_size-smallest {
+  border: $size_smallest solid;
+}
+
+.dumbell_size-small {
+  border: $size_small solid;
+}
+
+.dumbell_size-medium {
+  border: $size_medium solid;
+}
+
+.dumbell_size-big {
+  border: $size_big solid;
+}
+
+.dumbell_size-biggest {
+  border: $size_biggest solid;
+}
+
+.dumbell_color-metallic {
+  border-color: $color_metallic;
+}
+
+.dumbell_color-plastic {
+  border-color: $color_plastic;
+}

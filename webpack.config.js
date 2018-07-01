@@ -1,29 +1,34 @@
 const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const CFG = {
-      publicPath: "/static/"
-};
 
 module.exports = {
     devtool: 'source-map',
-    entry: [
-        'webpack-hot-middleware/client',
-        'babel-polyfill',
-        './src/index.js'
-    ],
+    devServer: {
+        contentBase: path.join(__dirname)
+    },
+    entry: {
+        index: './src/index.js',
+        polyfill: 'babel-polyfill'
+    },
     mode: 'development',
     output: {
         path: path.join(__dirname, 'dist'),
-        filename: 'bundle.js',
-        publicPath: CFG.publicPath
+        filename: '[name].js'
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
-            filename: "[name].css",
-            chunkFilename: "[id].css"
+            filename: "style-[name].css",
+            chunkFilename: "style-[id].css"
+        }),
+        new HtmlWebpackPlugin({
+            template: "./src/index.html",
+            filename: "index.html",
+            chunks: ["polyfill","index"],
+            chunksSortMode: "manual",
         })
     ],
 
@@ -54,12 +59,7 @@ module.exports = {
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            publicPath: CFG.publicPath
-                        }
-                    },
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader',
                 ]
