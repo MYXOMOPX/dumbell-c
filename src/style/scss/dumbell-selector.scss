@@ -1,0 +1,28 @@
+$dbs_border: 2px dashed #afa6a6;
+$dbs_border-radius: 7px;
+$dbs_item-margin: 30px;
+
+.dumbell-selector {
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: flex-end;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  border: 1px solid blue;
+  padding: 8px;
+  border: $dbs_border;
+  border-radius: $dbs_border-radius;
+}
+
+.dumbell-selector__item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-left: $dbs_item-margin;
+  margin-right: $dbs_item-margin;
+}
+
+.dumbell-selector__item__number-input {
+  width: 50px;
+}

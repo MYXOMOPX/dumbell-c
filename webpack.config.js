@@ -2,6 +2,8 @@ const path = require('path');
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const HtmlWebpackIncludeAssetsPlugin = require('html-webpack-include-assets-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 
 module.exports = {
@@ -11,7 +13,9 @@ module.exports = {
     },
     entry: {
         index: './src/index.js',
-        polyfill: 'babel-polyfill'
+        bootstrap: 'bootstrap',
+        polyfill: 'babel-polyfill',
+        vendor: ["jquery", "popper.js"]
     },
     mode: 'development',
     output: {
@@ -21,14 +25,21 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
-            filename: "style-[name].css",
-            chunkFilename: "style-[id].css"
+            filename: "style/style-[name].css",
+            chunkFilename: "style/style-[id].css"
         }),
         new HtmlWebpackPlugin({
             template: "./src/index.html",
             filename: "index.html",
-            chunks: ["polyfill","index"],
+            chunks: ["polyfill","vendor","bootstrap","index"],
             chunksSortMode: "manual",
+        }),
+        new CopyWebpackPlugin([
+            {from: "./node_modules/bootstrap/dist/css/bootstrap.min.css", to: "./style"}
+        ]),
+        new HtmlWebpackIncludeAssetsPlugin({
+            assets: ['style/bootstrap.min.css'],
+            append: false
         })
     ],
 
@@ -40,9 +51,10 @@ module.exports = {
                 include: [
                     path.resolve(__dirname, "src"),
                 ],
+                exclude: /node_modules/,
                 test: /\.jsx?$/,
                 query: {
-                    plugins: ['transform-runtime','react-hot-loader/babel'],
+                    plugins: ['transform-runtime','react-hot-loader/babel', 'transform-decorators-legacy'],
                     presets: ['es2015', 'stage-0', 'react'],
                 }
             },
@@ -54,12 +66,18 @@ module.exports = {
                 include: [
                     path.resolve(__dirname, "src"),
                 ],
+                exclude: /node_modules/
             },
             // Правило для стилей (css, scss)
             {
                 test: /\.(sa|sc|c)ss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            publicPath: './style'
+                        }
+                    },
                     'css-loader',
                     'sass-loader',
                 ]

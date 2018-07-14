@@ -1,1 +1,8 @@
 @import "./dumbell";
+@import "./dumbell-selector";
+@import "page";
+
+.btn:focus,.btn:active {
+  outline: none !important;
+  box-shadow: none;
+}
