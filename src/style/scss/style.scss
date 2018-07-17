@@ -1,6 +1,7 @@
 @import "./dumbell";
 @import "./dumbell-selector";
-@import "page";
+@import "./page";
+@import "./popper";
 
 .btn:focus,.btn:active {
   outline: none !important;

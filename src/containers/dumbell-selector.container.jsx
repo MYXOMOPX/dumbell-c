@@ -4,6 +4,7 @@ import NumericInput from 'react-numeric-input';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {changeDumbellList} from "../actions/dumbell.action";
+import {DumbellCreator} from "../components/dumbell-creator/dumbell-creator.component";
 
 const stateToProps = (state) => ({
     dumbells: state.dumbells
@@ -25,9 +26,7 @@ export class DumbellSelector extends Component {
         return (
             <div key={key} className="dumbell-selector__item">
                 <Dumbell
-                    weight={dumbellInfo.weight}
-                    size={dumbellInfo.size}
-                    type={dumbellInfo.type}
+                    dumbellInfo={dumbellInfo}
                 />
                 <NumericInput
                     className="dumbell-selector__item__number-input"
@@ -56,6 +55,9 @@ export class DumbellSelector extends Component {
         return (
             <div className="dumbell-selector">
                 {this.renderDumbells()}
+                <div className="dumbell-selector__item dumbell-selector__item-creator">
+                    <DumbellCreator/>
+                </div>
             </div>
         )
     }

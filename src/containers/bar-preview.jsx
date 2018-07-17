@@ -27,9 +27,7 @@ export class BarPreview extends Component {
         return dumbellsForRender.map((dumbell,i) => {
             return (
                 <Dumbell
-                    weight={dumbell.weight}
-                    size={dumbell.size}
-                    type={dumbell.type}
+                    dumbellInfo={dumbell}
                     key={i}
                 />
             )

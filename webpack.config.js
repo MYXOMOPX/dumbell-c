@@ -22,6 +22,9 @@ module.exports = {
         path: path.join(__dirname, 'dist'),
         filename: '[name].js'
     },
+    resolve: {
+        extensions: ['.js', '.jsx']
+    },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new MiniCssExtractPlugin({
@@ -35,12 +38,16 @@ module.exports = {
             chunksSortMode: "manual",
         }),
         new CopyWebpackPlugin([
-            {from: "./node_modules/bootstrap/dist/css/bootstrap.min.css", to: "./style"}
+            {from: "./node_modules/bootstrap/dist/css/bootstrap.min.css", to: "./style"},
+        ]),
+        new CopyWebpackPlugin([
+            {from: "./node_modules/font-awesome/css/font-awesome.css", to: "./style"},
+            {from: "./node_modules/font-awesome/fonts", to: "./fonts"}
         ]),
         new HtmlWebpackIncludeAssetsPlugin({
-            assets: ['style/bootstrap.min.css'],
+            assets: ['style/bootstrap.min.css','style/font-awesome.css'],
             append: false
-        })
+        }),
     ],
 
     module: { //Обновлено

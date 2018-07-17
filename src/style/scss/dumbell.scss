@@ -8,9 +8,6 @@ $outline_color: black;
 $color_metallic: #3a393a;
 $color_plastic: #b8b8b8;
 
-$text-color_metallic: white;
-$text-color_plastic: black;
-
 .dumbell-container {
   display: inline-flex;
   flex-flow: column;
@@ -54,16 +51,87 @@ $text-color_plastic: black;
   border: $size_biggest solid;
 }
 
-.dumbell-container_color-metallic>.dumbell {
+.dumbell-container_type-metallic>.dumbell {
   border-color: $color_metallic;
-  color: $text-color_metallic
 }
 
-.dumbell-container_color-plastic>.dumbell {
+.dumbell-container_type-plastic>.dumbell {
   border-color: $color_plastic;
-  color: $text-color_plastic
 }
 
-.dumbell__text {
-  transform: translate(-2px,9px);
+$dumbell-creator_size: 60px;
+$dumbell-creator_color: lightgrey;
+$dumbell-creator_color-hovered: #7cafda;
+$dumbell-creator_icon-size: 30px;
+.dumbell-creator {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed $dumbell-creator_color;
+  &__icon{
+    width: $dumbell-creator_icon-size;
+    height: $dumbell-creator_icon-size;
+    line-height: $dumbell-creator_icon-size;
+    font-size: $dumbell-creator_icon-size;
+    margin-top: 3px;
+    vertical-align: bottom;
+    text-align: center;
+  }
+}
+
+.dumbell-container_type-creator>.dumbell {
+  width: $dumbell-creator_size;
+  height: $dumbell-creator_size;
+  box-shadow: none;
+  border: 2px dashed $dumbell-creator_color;
+  color: $dumbell-creator_color;
+
+}
+
+.dumbell-container_type-creator:hover>.dumbell, .dumbell-container_type-creator.active>.dumbell {
+  border: 2px dashed $dumbell-creator_color-hovered;
+  font-size: 30px;
+  color: $dumbell-creator_color-hovered;
+  cursor: pointer;
+}
+
+.dumbell-text {  }
+
+
+.dumbell-creator-popup {
+    display: flex;
+    flex-flow: column;
+    max-width: 132px;
+    font-size: 14px;
+}
+
+.dumbell-creator-popup__title {
+    font-weight: bold;
+    padding-bottom: 1px;
+    border-bottom: 1px white solid;
+}
+
+.dumbell-creator-popup__option {
+    display: flex;
+    flex-flow: row;
+    margin-top: 5px;
+}
+
+.dumbell-creator-popup__option__title {
+    width: 50px;
+}
+
+.dumbell-creator-popup__option__value {
+    margin-left: 5px;
+    flex-grow: 1;
+    &__input {
+        width: 100%;
+        height: 22px;
+        padding-left: 5px;
+    }
+}
+
+.dumbell-creator-popup__btn {
+    margin-top: 5px;
 }

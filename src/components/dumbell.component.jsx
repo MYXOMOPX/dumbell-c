@@ -7,15 +7,15 @@ import React, { Component } from 'react'
 export class Dumbell extends Component {
 
     get weight(){
-        return Number(this.props.weight)
+        return this.props.dumbellInfo.weight;
     }
 
     get size() {
-        return this.props.size
+        return this.props.dumbellInfo.size
     }
 
     get type() {
-        return this.props.type
+        return this.props.dumbellInfo.type
     }
 
     get sizeClass() {
@@ -31,9 +31,9 @@ export class Dumbell extends Component {
 
     get typeClass() {
         switch (this.type) {
-            case 0: return "dumbell-container_color-metallic";
-            case 1: return "dumbell-container_color-plastic";
-            default: return "dumbell-container_color-metallic";
+            case 0: return "dumbell-container_type-metallic";
+            case 1: return "dumbell-container_type-plastic";
+            default: return "dumbell-container_type-metallic";
         }
     }
 
