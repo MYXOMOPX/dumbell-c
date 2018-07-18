@@ -10,22 +10,22 @@ export class Dumbell extends Component {
         return this.props.dumbellInfo.weight;
     }
 
-    get size() {
-        return this.props.dumbellInfo.size
-    }
-
     get type() {
         return this.props.dumbellInfo.type
     }
 
     get sizeClass() {
-        switch (this.size) {
-            case 0: return "dumbell-container_size-smallest";
-            case 1: return "dumbell-container_size-small";
-            case 2: return "dumbell-container_size-medium";
-            case 3: return "dumbell-container_size-big";
-            case 4: return "dumbell-container_size-biggest";
-            default: return "dumbell-container_size-medium";
+        const weight = this.weight;
+        if (weight < 2.5) {
+            return "dumbell-container_size-smallest";
+        } else if (weight < 5) {
+            return "dumbell-container_size-small";
+        } else if (weight < 10) {
+            return "dumbell-container_size-medium";
+        } else if (weight < 20) {
+            return "dumbell-container_size-big";
+        } else {
+            return "dumbell-container_size-biggest";
         }
     }
 
@@ -41,9 +41,13 @@ export class Dumbell extends Component {
         return "dumbell-container "+this.sizeClass+" "+this.typeClass
     }
 
+    click(e){
+        if (this.props.onClick) this.props.onClick(e)
+    }
+
     render() {
         return (
-            <div className={this.containerClassNames}>
+            <div className={this.containerClassNames} onClick={this::this.click}>
                 <div key={0} className="dumbell"></div>
                 <div key={1} className="dumbell-text">{this.weight}kg</div>
             </div>

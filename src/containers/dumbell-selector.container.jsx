@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
-import {Dumbell} from "../components/dumbell.component"
-import NumericInput from 'react-numeric-input';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 import {changeDumbellList} from "../actions/dumbell.action";
-import {DumbellCreator} from "../components/dumbell-creator/dumbell-creator.component";
+import {DumbellCreator} from "../components/dumbell/dumbell-creator/dumbell-creator.component";
+import {DumbellInfo} from "../model/DumbellInfo";
+import {DumbellWithOptions} from "../components/dumbell/dumbell-with-options.component";
+
+
 
 const stateToProps = (state) => ({
     dumbells: state.dumbells
@@ -13,36 +15,37 @@ const dispatchToProps = (dispatch) => ({
     dispatchChangeDumbellList: bindActionCreators(changeDumbellList, dispatch)
 });
 
+
 @connect(stateToProps, dispatchToProps)
 export class DumbellSelector extends Component {
 
     /**
      * Рендерит отдельный диск
-     * @param dumbellInfo {DumbellInfo} - информация о блине
-     * @param key {number} - число для рендеринга (React требует)
+     * @param dumbell {DumbellInfo} - информация о блине
+     * @param key {number} - ключ для render
      * @return {XML}
      */
-    renderDumbell(dumbellInfo, key) {
+    renderDumbell(dumbell, key) {
         return (
-            <div key={key} className="dumbell-selector__item">
-                <Dumbell
-                    dumbellInfo={dumbellInfo}
-                />
-                <NumericInput
-                    className="dumbell-selector__item__number-input"
-                    value={dumbellInfo.count}
-                    onChange={this.onDumbellCountCommit.bind(this,dumbellInfo)}
-                    min={0}
-                    max={98}
-                    step={2}
-                />
-            </div>
+            <DumbellWithOptions
+                key={key}
+                dumbellInfo={dumbell}
+                onSettingsChange={this::this.onDumbellChange}
+                onRemove={this::this.onDumbellRemove}
+            />
         )
     }
 
-    onDumbellCountCommit(dumbellInfo, count){
-        dumbellInfo.count = count || 0;
-        this.props.dispatchChangeDumbellList(this.props.dumbells);
+
+    onDumbellChange(){
+        const dumbells = this.props.dumbells.slice(0);
+        this.props.dispatchChangeDumbellList(dumbells);
+    }
+
+    onDumbellRemove(dumbell){
+        const index = this.props.dumbells.indexOf(dumbell);
+        let arr = this.props.dumbells.slice(0).splice(index,1);
+        this.props.dispatchChangeDumbellList(arr);
     }
 
     renderDumbells() {
@@ -56,9 +59,16 @@ export class DumbellSelector extends Component {
             <div className="dumbell-selector">
                 {this.renderDumbells()}
                 <div className="dumbell-selector__item dumbell-selector__item-creator">
-                    <DumbellCreator/>
+                    <DumbellCreator onCreate={::this.onCreateDumbell}/>
                 </div>
             </div>
         )
+    }
+
+    onCreateDumbell(data){
+        const dumbell = new DumbellInfo(data.weight, data.type);
+        const dumbells = this.props.dumbells.slice(0);
+        dumbells.push(dumbell);
+        this.props.dispatchChangeDumbellList(dumbells);
     }
 }

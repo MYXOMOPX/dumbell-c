@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from "react-redux";
 import {getDumbellsForWeight} from "../util/dumbell-counter";
-import {Dumbell} from "../components/dumbell.component";
+import {Dumbell} from "../components/dumbell/dumbell.component";
 
 const stateToProps = (state) => ({
     barWeight: state.barSettings.barWeight,

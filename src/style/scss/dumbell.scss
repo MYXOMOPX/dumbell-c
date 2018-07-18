@@ -99,30 +99,29 @@ $dumbell-creator_icon-size: 30px;
 .dumbell-text {  }
 
 
-.dumbell-creator-popup {
+.dumbell-popup {
     display: flex;
     flex-flow: column;
-    max-width: 132px;
     font-size: 14px;
 }
 
-.dumbell-creator-popup__title {
+.dumbell-popup__title {
     font-weight: bold;
     padding-bottom: 1px;
     border-bottom: 1px white solid;
 }
 
-.dumbell-creator-popup__option {
+.dumbell-popup__option {
     display: flex;
     flex-flow: row;
     margin-top: 5px;
 }
 
-.dumbell-creator-popup__option__title {
+.dumbell-popup__option__title {
     width: 50px;
 }
 
-.dumbell-creator-popup__option__value {
+.dumbell-popup__option__value {
     margin-left: 5px;
     flex-grow: 1;
     &__input {
@@ -132,6 +131,6 @@ $dumbell-creator_icon-size: 30px;
     }
 }
 
-.dumbell-creator-popup__btn {
+.dumbell-popup__btn {
     margin-top: 5px;
 }

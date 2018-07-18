@@ -21,6 +21,8 @@ $dbs_item-margin: 30px;
   align-items: center;
   margin-left: $dbs_item-margin;
   margin-right: $dbs_item-margin;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .dumbell-selector__item-creator {
@@ -28,5 +30,7 @@ $dbs_item-margin: 30px;
 }
 
 .dumbell-selector__item__number-input {
+  height: 22px;
+  padding-left: 5px;
   width: 50px;
 }

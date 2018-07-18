@@ -39,10 +39,9 @@ module.exports = {
         }),
         new CopyWebpackPlugin([
             {from: "./node_modules/bootstrap/dist/css/bootstrap.min.css", to: "./style"},
-        ]),
-        new CopyWebpackPlugin([
             {from: "./node_modules/font-awesome/css/font-awesome.css", to: "./style"},
-            {from: "./node_modules/font-awesome/fonts", to: "./fonts"}
+            {from: "./node_modules/font-awesome/fonts", to: "./fonts"},
+            {from: "./assets", to: "./"}
         ]),
         new HtmlWebpackIncludeAssetsPlugin({
             assets: ['style/bootstrap.min.css','style/font-awesome.css'],
