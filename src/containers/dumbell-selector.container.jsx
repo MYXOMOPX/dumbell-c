@@ -50,9 +50,12 @@ export class DumbellSelector extends Component {
     }
 
     renderDumbells() {
-        return this.props.dumbells.map((dumbell,i) => {
-            return this.renderDumbell(dumbell,i)
-        });
+        return this.props.dumbells
+            .sort((a,b) => a.weight - b.weight)
+            .map((dumbell,i) => {
+                return this.renderDumbell(dumbell,i)
+            })
+        ;
     }
 
     render() {
