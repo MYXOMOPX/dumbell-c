@@ -5,7 +5,7 @@ const initialState = [
     new DumbellInfo(0.5,1),
     new DumbellInfo(1.25,0),
     new DumbellInfo(2.5,0),
-    new DumbellInfo(5,2,4),
+    new DumbellInfo(5,0,4),
     new DumbellInfo(10,1),
     new DumbellInfo(20,0),
 ];

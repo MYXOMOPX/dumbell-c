@@ -10,13 +10,13 @@ class DumbellOptionsPopup extends Component {
         super(props);
         this.state = {
             weight: this.props.dumbell.weight,
-            type: this.props.dumbell.weight,
+            type: this.props.dumbell.type,
         }
     }
 
     render() {
         return (
-            <div className="dumbell-popup">
+            <div className="dumbell-popup" style={{width: 160}}>
                 <span className="dumbell-popup__title">Настройки</span>
                 <div className="dumbell-popup__option">
                     <span className="dumbell-popup__option__title">Вес:</span>
@@ -48,13 +48,13 @@ class DumbellOptionsPopup extends Component {
                     </div>
                 </div>
                 <button className={classnames({
-                        "btn btn-danger btn-sm dumbell-popup__btn": true,
+                        "btn btn-light btn-sm dumbell-popup__btn": true,
                         "disabled": this.isSaveButtonDisabled
                     })}
                     onClick={::this.clickSave}
                 >Сохранить</button>
                 <button className={classnames({
-                        "btn btn-danger btn-sm dumbell-popup__btn": true,
+                        "btn btn-light btn-sm dumbell-popup__btn": true,
                     })}
                     onClick={::this.clickRemove}
                 >Удалить</button>
@@ -90,12 +90,12 @@ class DumbellOptionsPopup extends Component {
         return false;
     }
 
-    isWeightChanged() {
+    get isWeightChanged() {
         return this.state.weight != this.props.dumbell.weight;
     }
 
-    isTypeChanged() {
-        return this.state.weight != this.props.dumbell.weight;
+    get isTypeChanged() {
+        return this.state.type != this.props.dumbell.type;
     }
 
     get isSaveButtonDisabled(){
@@ -105,6 +105,7 @@ class DumbellOptionsPopup extends Component {
     }
 
     clickSave(){
+        if (this.isSaveButtonDisabled) return;
         this.props.onSave(this.state)
     }
 

@@ -7,7 +7,6 @@ import {Reference, Manager, Popper} from "react-popper";
 import {OnClickOut} from "../../util/decorator/on-click-out.decorator";
 import {Dumbell} from "./dumbell.component";
 import {DumbellOptionsPopup} from "./dumbell-options-popup";
-import {DumbellCreatorPopup} from "./dumbell-creator/dumbell-creator-popup.component";
 
 /**
  * DumbellWithOptions
@@ -31,9 +30,9 @@ class DumbellWithOptions extends Component {
                 <Manager>
                     <Reference>
                         {({ref}) => (
-                            <Dumbell ref={ref} onClick={this::this.togglePopup}
-                                     dumbellInfo={this.props.dumbellInfo}
-                            />
+                            <div ref={ref} onClick={this::this.togglePopup}>
+                                <Dumbell dumbellInfo={this.props.dumbellInfo}/>
+                            </div>
                         )}
                     </Reference>
                     {this.state.popupShown && this.renderPopup()}
@@ -58,8 +57,8 @@ class DumbellWithOptions extends Component {
 
     renderPopup(){
         return (
-            <Popper placement="down">
-                {props => getPopper(props, <DumbellCreatorPopup onCreate={console.log}/>)}
+            <Popper placement="right">
+                {props => getPopper(props, <DumbellOptionsPopup onSave={::this.onSave} onRemove={::this.onRemove} dumbell={this.props.dumbellInfo}/>)}
             </Popper>
         )
     }
@@ -75,12 +74,14 @@ class DumbellWithOptions extends Component {
     }
 
     onSave({weight, type}){
+        this.closePopup();
         this.props.dumbellInfo.weight = weight;
         this.props.dumbellInfo.type = type;
         this.props.onSettingsChange(this.props.dumbellInfo, {weight, type});
     }
 
     onRemove(){
+        this.closePopup();
         this.props.onRemove(this.props.dumbellInfo);
     }
 }

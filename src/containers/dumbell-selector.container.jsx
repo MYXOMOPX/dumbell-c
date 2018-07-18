@@ -44,7 +44,8 @@ export class DumbellSelector extends Component {
 
     onDumbellRemove(dumbell){
         const index = this.props.dumbells.indexOf(dumbell);
-        let arr = this.props.dumbells.slice(0).splice(index,1);
+        let arr = this.props.dumbells.slice(0);
+        arr.splice(index,1);
         this.props.dispatchChangeDumbellList(arr);
     }
 

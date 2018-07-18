@@ -38,7 +38,7 @@ class DumbellCreator extends Component {
 
     renderPopup(){
         return (
-            <Popper placement="left">
+            <Popper placement="right">
                 {props => getPopper(props, <DumbellCreatorPopup onCreate={::this.onCreate}/>)}
             </Popper>
         )

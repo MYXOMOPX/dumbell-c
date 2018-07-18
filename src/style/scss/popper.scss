@@ -1,7 +1,9 @@
 $popper-color: #5e68c5;
 $popper-text-color: white;
+$popper-z-index: 10;
 
 .popper {
+  z-index: $popper-z-index;
   background: $popper-color;
   color: $popper-text-color;
   //width: 150px;
