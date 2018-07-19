@@ -1,0 +1,37 @@
+.bar-settings {
+    margin-top: 15px;
+}
+
+.bar-settings__property {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    margin-top: 10px;
+    width: 50%;
+}
+
+.bar-settings__property__label {
+    height: 22px;
+    width: 100px;
+}
+
+.bar-settings__property__value__input{
+    height: 22px;
+    max-width: 100px;
+}
+
+
+
+.bar-preview{
+    margin-top: 5px;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    min-height: 100px;
+}
+
+.bar-preview__item {
+    display: inline-block;
+    margin-right: 15px;
+}

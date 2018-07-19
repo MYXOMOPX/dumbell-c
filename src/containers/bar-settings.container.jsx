@@ -27,25 +27,27 @@ export class BarSettings extends Component {
         return (
             <div className="bar-settings">
                 <div className="bar-settings__property">
-                    <div className="bar-settings__property__label">Вес грифа:</div>
+                    <label className="bar-settings__property__label">Вес грифа:</label>
                     <div className="bar-settings__property__value">
-                        <NumericInput className="bar-settings__property__value__input"
+                        <NumericInput className="bar-settings__property__value__input form-control"
                                       value={this.props.barWeight}
                                       onChange={::this.onChangeBarWeight}
                                       min={0}
                                       max={100}
+                                      format={x => `${x} кг`}
                                       step={0.5}
                         />
                     </div>
                 </div>
                 <div className="bar-settings__property">
-                    <div className="bar-settings__property__label">Нужный вас:</div>
+                    <label className="bar-settings__property__label">Нужный вес:</label>
                     <div className="bar-settings__property__value">
-                        <NumericInput className="bar-settings__property__value__input"
+                        <NumericInput className="bar-settings__property__value__input form-control"
                                       value={this.props.requiredWeight}
                                       onChange={::this.onChangeRequiredWeight}
                                       min={this.props.barWeight}
                                       max={this.maxRequiredWeight}
+                                      format={x => `${x} кг`}
                                       step={0.5}
                         />
                     </div>

@@ -26,10 +26,9 @@ export class BarPreview extends Component {
         if (!dumbellsForRender) return (<span>Невозможно</span>);
         return dumbellsForRender.map((dumbell,i) => {
             return (
-                <Dumbell
-                    dumbellInfo={dumbell}
-                    key={i}
-                />
+                <div key={i} className="bar-preview__item">
+                    <Dumbell dumbellInfo={dumbell}/>
+                </div>
             )
         });
     }

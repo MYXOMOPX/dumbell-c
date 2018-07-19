@@ -49,7 +49,7 @@ export class Dumbell extends Component {
         return (
             <div className={this.containerClassNames} onClick={this::this.click}>
                 <div key={0} className="dumbell"></div>
-                <div key={1} className="dumbell-text">{this.weight}kg</div>
+                <div key={1} className="dumbell-text">{this.weight}кг</div>
             </div>
         )
     }

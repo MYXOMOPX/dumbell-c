@@ -26,14 +26,12 @@ $color_plastic: #b8b8b8;
 }
 
 .dumbell-container_size-smallest{
-  font-size: 80%;
   &>.dumbell{
     border: $size_smallest solid;
   }
 }
 
 .dumbell-container_size-small{
-  font-size: 90%;
   &>.dumbell{
     border: $size_small solid;
   }
@@ -86,6 +84,7 @@ $dumbell-creator_icon-size: 30px;
   box-shadow: none;
   border: 2px dashed $dumbell-creator_color;
   color: $dumbell-creator_color;
+  transition: all linear .15s;
 
 }
 

@@ -41,7 +41,7 @@ class DumbellWithOptions extends Component {
                     className="dumbell-selector__item__number-input form-control"
                     value={this.props.dumbellInfo.count}
                     onChange={::this.onCountCommit}
-                    min={0}
+                    min={2}
                     max={98}
                     step={2}
                 />
