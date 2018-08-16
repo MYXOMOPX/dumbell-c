@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import {DUMBELL_TYPES} from "../../constants/global.constants";
 
 /**
  * Dumbell
@@ -30,11 +31,18 @@ export class Dumbell extends Component {
     }
 
     get typeClass() {
-        switch (this.type) {
-            case 0: return "dumbell-container_type-metallic";
-            case 1: return "dumbell-container_type-plastic";
-            default: return "dumbell-container_type-metallic";
-        }
+        const type = DUMBELL_TYPES[this.type];
+        if (!type) return "dumbell-container_type-metallic";
+        return `dumbell-container_type-${type}`;
+        // switch (this.type) {
+        //     case 0: return "dumbell-container_type-metallic";
+        //     case 1: return "dumbell-container_type-plastic";
+        //     case 2: return "dumbell-container_type-yellow";
+        //     case 3: return "dumbell-container_type-red";
+        //     case 4: return "dumbell-container_type-green";
+        //     case 5: return "dumbell-container_type-blue";
+        //     default: return "dumbell-container_type-metallic";
+        // }
     }
 
     get containerClassNames() {

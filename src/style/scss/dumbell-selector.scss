@@ -15,6 +15,11 @@ $dbs_item-margin: 25px;
   border-radius: $dbs_border-radius;
 }
 
+.dumbell-selector__reset {
+    align-self: flex-start;
+    position: absolute;
+}
+
 .dumbell-selector__item {
   display: flex;
   flex-flow: column;
@@ -23,6 +28,10 @@ $dbs_item-margin: 25px;
   margin-right: $dbs_item-margin;
   margin-bottom: 10px;
   margin-top: 10px;
+
+  &__dumbell {
+      cursor: pointer;
+  }
 }
 
 .dumbell-selector__item-creator {

@@ -7,6 +7,10 @@ $size_biggest: 24px;
 $outline_color: black;
 $color_metallic: #3a393a;
 $color_plastic: #b8b8b8;
+$color_yellow: #d6af0c;
+$color_green: #379960;
+$color_blue: #3d68a2;
+$color_red: #cc2f30;
 
 .dumbell-container {
   display: inline-flex;
@@ -52,9 +56,20 @@ $color_plastic: #b8b8b8;
 .dumbell-container_type-metallic>.dumbell {
   border-color: $color_metallic;
 }
-
 .dumbell-container_type-plastic>.dumbell {
   border-color: $color_plastic;
+}
+.dumbell-container_type-yellow>.dumbell {
+  border-color: $color_yellow;
+}
+.dumbell-container_type-red>.dumbell {
+  border-color: $color_red;
+}
+.dumbell-container_type-green>.dumbell {
+  border-color: $color_green;
+}
+.dumbell-container_type-blue>.dumbell {
+  border-color: $color_blue;
 }
 
 $dumbell-creator_size: 60px;

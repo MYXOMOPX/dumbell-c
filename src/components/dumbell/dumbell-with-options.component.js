@@ -30,7 +30,7 @@ class DumbellWithOptions extends Component {
                 <Manager>
                     <Reference>
                         {({ref}) => (
-                            <div ref={ref} onClick={this::this.togglePopup}>
+                            <div ref={ref} onClick={this::this.togglePopup} className="dumbell-selector__item__dumbell">
                                 <Dumbell dumbellInfo={this.props.dumbellInfo}/>
                             </div>
                         )}
